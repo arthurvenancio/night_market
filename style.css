@@ -103,3 +103,32 @@ footer {
 #carrinho-botao span {
   font-family: 'Share Tech Mono', monospace;
 }
+
+#voltar-botao {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+
+  background-color: #330000;
+  border: 2px solid #ff2d2d;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 0 10px #ff2d2d88;
+  text-decoration: none;
+  z-index: 1000;
+  transition: background-color 0.2s ease;
+}
+
+#voltar-botao:hover {
+  background-color: #550000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px #ff2d2d;
+}
+
+#voltar-botao span {
+  font-family: 'Share Tech Mono', monospace;
+}

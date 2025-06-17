@@ -1,6 +1,8 @@
-import db from "./db/db.json" with {type: 'json'}
 
 async function trazerObjetoDB(chave) {
+    const db = await fetch("../db/db.json")
+    .then(response => response.json())
+
     const link = db[chave];
     const response = await fetch(link);
     const texto = await response.text()
@@ -21,3 +23,11 @@ async function trazerObjetoDB(chave) {
 
     return resultado
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+    
+    const categoria = sessionStorage.getItem("categoria")
+    const titulo = document.getElementById("categoria-titulo")
+    titulo.innerHTML = `${categoria}`
+
+})
