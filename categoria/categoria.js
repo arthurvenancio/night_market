@@ -55,6 +55,9 @@ async function preencherItens() {
         const botao_descricao = document.createElement("button"); 
         botao_descricao.innerHTML = "Descrição"
         botao_descricao.classList.add("category-card-btn");
+        botao_descricao.addEventListener("click",()=>{
+            abrirModalDescricao(itens[item]);
+        })
 
         container_acoes.appendChild(botao_descricao);
         container_acoes.appendChild(botao_adicionar);
@@ -81,3 +84,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     atualizarCarrinho()
 
 })
+
+function abrirModalDescricao(item) {
+    const modal = document.getElementById("descricao-modal");
+    const titulo = document.getElementById("modal-titulo");
+    const descricao = document.getElementById("modal-descricao");
+
+    titulo.textContent = `${item.Name} - $${item.Price}`;
+    descricao.textContent = item.Description || "Sem descrição disponível.";
+    modal.classList.remove("hidden");
+}
+
+function fecharModalDescricao() {
+    const modal = document.getElementById("descricao-modal");
+    modal.classList.add("hidden");
+}
+
+document.getElementById("fechar-modal").addEventListener("click", fecharModalDescricao);
+
+document.getElementById("descricao-modal").addEventListener("click", e => {
+    if (e.target.id === "descricao-modal") {
+        fecharModalDescricao();
+    }
+});

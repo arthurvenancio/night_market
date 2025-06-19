@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Night Market - Cyberpunk Red</title>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <link rel="stylesheet" href="/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
@@ -24,7 +24,15 @@
     <main id="itens-container">
 
     </main>
+    <div id="descricao-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="fechar-modal" class="modal-close">&times;</button>
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-descricao" style="margin-top: 2rem;"></p>
+        </div>
+    </div>
 
 </body>
 <script type="module" src="categoria.js"></script>
+
 </html>
