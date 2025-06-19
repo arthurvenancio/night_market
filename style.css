@@ -235,3 +235,14 @@ footer {
   font-size: 24px;
   cursor: pointer;
 }
+
+.btn-excluir {
+  background-color: #ff2d2d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}

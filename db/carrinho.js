@@ -16,7 +16,14 @@ export function atualizarCarrinho() {
 
 export function removerItemCarrinho(item) {
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    carrinho = carrinho.filter(i => i.Name !== item.Name);
+    carrinho = carrinho.filter(i => i.id !== item.id);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
     atualizarCarrinho();
+}
+
+export function adicionarItemCarrinho(item) {
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho.push(item);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    atualizarCarrinho()
 }
