@@ -1,4 +1,4 @@
-import { removerItemCarrinho, atualizarCarrinho} from "../db/carrinho.js";
+import { removerItemCarrinho, atualizarCarrinho, descontoTech} from "../db/carrinho.js";
 
 function criarItemComprado(item){
 
@@ -23,12 +23,37 @@ function criarItemComprado(item){
         containerItem.appendChild(containerEsquerdo);
 
         const containerDireito = document.createElement("div");
+        containerDireito.style.display = "flex";
+        containerDireito.style.gap = "1rem";
+
 
         const precoItem = document.createElement("span");
         precoItem.innerHTML = `$ ${parseFloat(item.Price).toFixed(2)}`;
         containerDireito.appendChild(precoItem);
-        containerItem.appendChild(containerDireito);
         
+        const desconto_tech = document.createElement("input")
+        desconto_tech.type = "checkbox";
+
+        desconto_tech.addEventListener("change", () => {
+            if(desconto_tech.checked){
+                localStorage.setItem(`preco-original-${item.id}`, item.Price);
+                descontoTech(item);
+                atualizarCarrinho();
+            }else{
+                const precoOriginal = localStorage.getItem(`preco-original-${item.id}`);
+                if(precoOriginal){
+                    item.Price = parseFloat(precoOriginal);
+                    
+                    atualizarCarrinho();
+                }
+            }
+        })
+
+        desconto_tech.classList.add("desconto-tech");
+        containerDireito.appendChild(desconto_tech);
+        
+        containerItem.appendChild(containerDireito);
+
         document.getElementById("compras-container").appendChild(containerItem);
 }
 

@@ -292,3 +292,23 @@ footer {
   border-bottom: #550000 2px solid;
   text-align: center;
 }
+
+#desconto-fixer:focus {
+  outline: none;
+  border-bottom: #ff2d2d 2px solid;
+}
+
+.desconto-tech{
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff2d2d;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.desconto-tech:checked{
+  background-color: #ff2d2d;
+}

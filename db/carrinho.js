@@ -24,6 +24,31 @@ export function removerItemCarrinho(item) {
     location.reload();
 }
 
+export function descontoTech(item){
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho = carrinho.map(i => {
+        if (i.id === item.id) {
+            if(i.Price>=10000){
+                i.Price = (i.Price * 0.5).toFixed(2);
+            }else if(i.Price>=5000){
+                i.Price = 1000;
+            }else if(i.Price>=1000){
+                i.Price = 500;
+            }else if(i.Price>=500){
+                i.Price = 100;
+            }else if(i.Price>=100){
+                i.Price = 50;
+            }else if(i.Price>=50){
+                i.Price = 20;
+            }else {
+                i.Price = i.Price;
+            }
+        }
+        return i;
+    });
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
 export function adicionarItemCarrinho(item) {
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
     carrinho.push(item);
