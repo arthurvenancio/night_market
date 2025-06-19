@@ -1,4 +1,4 @@
-import { removerItemCarrinho} from "../db/carrinho.js";
+import { removerItemCarrinho, atualizarCarrinho} from "../db/carrinho.js";
 
 function criarItemComprado(item){
 
@@ -12,7 +12,6 @@ function criarItemComprado(item){
         botaoRemover.classList.add("btn-excluir");
         botaoRemover.addEventListener("click", () => {
             removerItemCarrinho(item);
-            listarCompras();
         });
 
         const nomeItem = document.createElement("span");
@@ -50,4 +49,5 @@ function listarCompras(){
 
 document.addEventListener("DOMContentLoaded", () => {
     listarCompras()
+    atualizarCarrinho();
 })

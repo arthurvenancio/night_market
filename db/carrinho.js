@@ -19,6 +19,7 @@ export function removerItemCarrinho(item) {
     carrinho = carrinho.filter(i => i.id !== item.id);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
     atualizarCarrinho();
+    location.reload();
 }
 
 export function adicionarItemCarrinho(item) {

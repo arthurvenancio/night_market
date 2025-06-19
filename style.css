@@ -265,6 +265,7 @@ footer {
   
   width: 75%;
   margin-inline: auto;
+  margin-bottom: 1rem;
   
   gap: 1rem;
 }
