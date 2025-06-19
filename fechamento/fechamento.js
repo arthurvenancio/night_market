@@ -1,8 +1,10 @@
 import { removerItemCarrinho} from "../db/carrinho.js";
 
-function criarItemComprado(item,carrinho){
+function criarItemComprado(item){
 
         const containerItem = document.createElement("div");
+        containerItem.classList.add("item-comprado");
+
         const containerEsquerdo= document.createElement("div");
 
         const botaoRemover = document.createElement("button");
@@ -15,21 +17,25 @@ function criarItemComprado(item,carrinho){
 
         const nomeItem = document.createElement("span");
         nomeItem.innerHTML = item.Name;
+        nomeItem.classList.add("titulo-item-comprado");
 
         containerEsquerdo.appendChild(botaoRemover);
         containerEsquerdo.appendChild(nomeItem);
         containerItem.appendChild(containerEsquerdo);
 
+        const containerDireito = document.createElement("div");
+
         const precoItem = document.createElement("span");
         precoItem.innerHTML = `$ ${parseFloat(item.Price).toFixed(2)}`;
-        containerItem.appendChild(precoItem);
+        containerDireito.appendChild(precoItem);
+        containerItem.appendChild(containerDireito);
         
-        document.getElementById("itens-container").appendChild(containerItem);
+        document.getElementById("compras-container").appendChild(containerItem);
 }
 
 function listarCompras(){
     const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    const container = document.getElementById("itens-container");
+    const container = document.getElementById("compras-container");
     container.innerHTML = "";
     if (carrinho.length === 0) {
         const mensagem = document.createElement("p");
@@ -38,7 +44,7 @@ function listarCompras(){
         return;
     }
     carrinho.forEach(item => {
-        criarItemComprado(item, carrinho);
+        criarItemComprado(item);
     });
 }
 
