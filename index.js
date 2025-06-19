@@ -1,5 +1,5 @@
 import db from "./db/db.json" with {type: 'json'}
-
+import { atualizarCarrinho} from "./db/carrinho.js";
 
 function preencherOpcoesCategoria(){
     const categorias = Object.keys(db);
@@ -22,4 +22,5 @@ function preencherOpcoesCategoria(){
 
 document.addEventListener("DOMContentLoaded", () => {
     preencherOpcoesCategoria()
+    atualizarCarrinho();
 })

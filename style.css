@@ -164,3 +164,28 @@ footer {
   transform: translateY(-4px);
   box-shadow: 0 0 15px #ff2d2d;
 }
+
+.category-card-btn {
+  background-color: #330000;
+  border: 2px solid #ff2d2d;
+  border-radius: 8px;
+
+  padding: 1rem;
+  
+  text-align: center;
+  color: #f8f8f8;
+  font-size: 0.9rem;
+
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px #ff2d2d44;
+}
+
+.category-card-btn:hover {
+  background-color: #550000;
+  box-shadow: 0 0 15px #ff2d2d;
+}
+
+.item-card-actions {
+  display: flex;
+  gap: 10px;
+}
