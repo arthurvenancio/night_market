@@ -47,7 +47,20 @@ function listarCompras(){
     });
 }
 
+function descontoFixer(){
+    const input_desconto=document.getElementById("desconto-fixer");
+    const desconto = input_desconto.value||0;
+    const valor_desconto = 1 - (desconto / 100);
+    const display_total = document.getElementById("subtotal");
+    const valor_total = localStorage.getItem("total") || 0;
+    display_total.innerHTML = (parseFloat(valor_total)*parseFloat(valor_desconto)).toFixed(2);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     listarCompras()
     atualizarCarrinho();
+})
+
+document.getElementById("desconto-fixer").addEventListener("change",() => {
+    descontoFixer();
 })

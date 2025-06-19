@@ -22,8 +22,10 @@
     <main id="compras-container" class="fechamento">
 
     </main>
-
-    <h2 style="margin-right: 13%;margin-left: auto;">Subtotal da compra: $<span id="subtotal"></span></h2>
+    <div style="margin-right: 13%;margin-left: auto; display: flex;flex-direction: column;gap: 0.5rem;">
+        <h3 style="display: flex; justify-content: space-between;">Desconto de fixer(%):<input type="number" max="100" min="0" id="desconto-fixer" placeholder="XX"/></h3>
+        <h2 >Subtotal da compra: $<span id="subtotal"></span></h2>
+    </div>
 
 </body>
 <script type="module" src="fechamento.js"></script>

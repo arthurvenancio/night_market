@@ -4,6 +4,7 @@ export function atualizarCarrinho() {
 
     if (carrinho.length === 0) {
         display_carrinho.innerHTML = "0";
+        localStorage.setItem("total", JSON.stringify(0));
     } else {
         let total = 0;
         carrinho.forEach(item => {
@@ -11,6 +12,7 @@ export function atualizarCarrinho() {
         });
         
         display_carrinho.innerHTML = `${total.toFixed(2)}`;
+        localStorage.setItem("total", JSON.stringify(total));
     }
 }
 

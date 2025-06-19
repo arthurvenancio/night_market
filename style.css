@@ -190,7 +190,6 @@ footer {
   gap: 10px;
 }
 
-/* Modal background */
 .modal {
   position: fixed;
   top: 0;
@@ -204,12 +203,10 @@ footer {
   z-index: 2000;
 }
 
-/* Oculto por padrão */
 .modal.hidden {
   display: none;
 }
 
-/* Conteúdo do modal */
 .modal-content {
   background-color: #1c1c1c;
   border: 2px solid #ff2d2d;
@@ -224,7 +221,6 @@ footer {
   font-family: 'Share Tech Mono', monospace;
 }
 
-/* Botão de fechar */
 .modal-close {
   position: absolute;
   top: 10px;
@@ -285,4 +281,14 @@ footer {
   height: 100%;
 
   border-radius: 0 8px 8px 0;
+}
+
+#desconto-fixer{
+  background-color: transparent;
+  border: none;
+  color: #ff2d2d;
+  width: 30%;
+  font-size: 1rem;
+  border-bottom: #550000 2px solid;
+  text-align: center;
 }
