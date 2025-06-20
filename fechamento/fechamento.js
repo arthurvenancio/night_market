@@ -36,16 +36,11 @@ function criarItemComprado(item){
 
         desconto_tech.addEventListener("change", () => {
             if(desconto_tech.checked){
-                localStorage.setItem(`preco-original-${item.id}`, item.Price);
-                descontoTech(item);
+                descontoTech(item,true);
                 atualizarCarrinho();
             }else{
-                const precoOriginal = localStorage.getItem(`preco-original-${item.id}`);
-                if(precoOriginal){
-                    item.Price = parseFloat(precoOriginal);
-                    
-                    atualizarCarrinho();
-                }
+                descontoTech(item,false);
+                atualizarCarrinho();
             }
         })
 
@@ -55,6 +50,17 @@ function criarItemComprado(item){
         containerItem.appendChild(containerDireito);
 
         document.getElementById("compras-container").appendChild(containerItem);
+}
+
+function criarTituloCompras(){
+    const container = document.createElement("div");
+    const spanTitulo = document.createElement("span");
+    const spanPreco = document.createElement("span");
+    spanTitulo.innerHTML = "Itens";
+    spanPreco.innerHTML = "Preço - Peças";
+    container.appendChild(spanTitulo);
+    container.appendChild(spanPreco);
+    document.getElementById("compras-container").appendChild(container);
 }
 
 function listarCompras(){
@@ -67,6 +73,7 @@ function listarCompras(){
         container.appendChild(mensagem);
         return;
     }
+    criarTituloCompras();
     carrinho.forEach(item => {
         criarItemComprado(item);
     });

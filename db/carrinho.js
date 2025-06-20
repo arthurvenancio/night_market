@@ -10,7 +10,8 @@ export function atualizarCarrinho() {
         carrinho.forEach(item => {
             total += parseFloat(item.Price || 0);
         });
-        
+        const desconto_tech = JSON.parse(localStorage.getItem("desconto_tech")) || 0;
+        total -= parseFloat(desconto_tech) || 0;
         display_carrinho.innerHTML = `${total.toFixed(2)}`;
         localStorage.setItem("total", JSON.stringify(total));
     }
@@ -24,29 +25,34 @@ export function removerItemCarrinho(item) {
     location.reload();
 }
 
-export function descontoTech(item){
-    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    carrinho = carrinho.map(i => {
-        if (i.id === item.id) {
-            if(i.Price>=10000){
-                i.Price = (i.Price * 0.5).toFixed(2);
-            }else if(i.Price>=5000){
-                i.Price = 1000;
-            }else if(i.Price>=1000){
-                i.Price = 500;
-            }else if(i.Price>=500){
-                i.Price = 100;
-            }else if(i.Price>=100){
-                i.Price = 50;
-            }else if(i.Price>=50){
-                i.Price = 20;
-            }else {
-                i.Price = i.Price;
-            }
-        }
-        return i;
-    });
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+export function descontoTech(i, adicionar) {
+    let desconto_tech = parseFloat(localStorage.getItem("desconto_tech")) || 0;
+    const price = parseFloat(i.Price || 0);
+    const descontoCalculado = calcularDescontoTech(price);
+    if (adicionar) {
+        desconto_tech += descontoCalculado;
+    } else {
+        desconto_tech -= descontoCalculado;
+    }
+    localStorage.setItem("desconto_tech", JSON.stringify(desconto_tech));
+}
+
+function calcularDescontoTech(price) {
+    if (price >= 10000) {
+        return (price * 0.5)
+    } else if (price >= 5000) {
+        return price - 1000;
+    } else if (price >= 1000) {
+        return price - 500;
+    } else if (price >= 500) {
+        return price - 100;
+    } else if (price >= 100) {
+        return price - 50;
+    } else if (price >= 50) {
+        return price - 20;
+    } else {
+        return 0;
+    }
 }
 
 export function adicionarItemCarrinho(item) {
